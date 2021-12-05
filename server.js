@@ -1,5 +1,5 @@
 const Port = process.env.PORT || 3001;
-const path = require('path');
+const perth = require('path');
 const fs = require('fs');
 
 const express = require('express');
@@ -16,15 +16,15 @@ apple.get('/api/notes', (req, res) => {
 });
 
 apple.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, './public/index.html'));
+    res.sendFile(perth.join(__dirname, './public/index.html'));
 });
 
 apple.get('/notes', (req, res) => {
-    res.sendFile(path.join(__dirname, './public/notes.html'));
+    res.sendFile(perth.join(__dirname, './public/notes.html'));
 });
 
 apple.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, './public/index.html'));
+    res.sendFile(perth.join(__dirname, './public/index.html'));
 });
 
 function aquireNew(body, notesArray){
@@ -40,7 +40,7 @@ function aquireNew(body, notesArray){
 
     notesArray.push(noteNew);
     fs.writeFileSync(
-        path.join(__dirname, './db/db.json'),
+        perth.join(__dirname, './db/db.json'),
         JSON.stringify(notesArray, null, 2)
     );
     return noteNew;
@@ -58,7 +58,7 @@ function noteDelete(id, notesArray){
         if(nate.id == id){
             notesArray.splice(i , 1);
             fs.writeFileSync(
-                path.join(__dirname, './db/db.json'),
+                perth.join(__dirname, './db/db.json'),
                 JSON.stringify(notesArray, null , 2)
             );
 
